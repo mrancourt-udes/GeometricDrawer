@@ -1,10 +1,9 @@
-//
-//  Cercle.h
-//  tp6
-//
-//  Created by Martin Rancourt on 2014-11-24.
-//  Copyright (c) 2014 Martin Racnourt. All rights reserved.
-//
+/** **************************************************************
+ \file cercle.h
+ \author Martin Rancourt - 140 59 412
+ \author Guillaume Theaud - 131 97 685
+ \brief Fichier d'en-tete de la classe cercle
+ *****************************************************************/
 
 #ifndef __CERCLE_H_
 #define __CERCLE_H_
@@ -20,11 +19,23 @@ class Cercle
 {
     Point pointCentral;
     float rayon;
+    int couleur;
     
 public:
     // Constructeurs
     Cercle();
     Cercle(Point, float);
+    
+    // Get/Set
+    Point valCentre();
+    float valRayon();
+    int   valCouleur();
+    
+    void changerCentre(Point);
+    void changerRayon(float);
+    void changerCouleur(int);
+    
+    void dessiner();
     
     // Pour lecture
     void lecture();

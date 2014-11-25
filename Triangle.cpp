@@ -1,10 +1,9 @@
-//
-//  Triangle.cpp
-//  tp6
-//
-//  Created by Martin Rancourt on 2014-11-22.
-//  Copyright (c) 2014 Martin Racnourt. All rights reserved.
-//
+/** **************************************************************
+ \file triangle.cpp
+ \author Martin Rancourt - 140 59 412
+ \author Guillaume Theaud - 131 97 685
+ \brief Fichier d'implementation de la classe triangle
+ *****************************************************************/
 
 #include "Triangle.h"
 
@@ -20,7 +19,6 @@ void Triangle::lecture()
     Point point2;
     Point point3;
     
-    // A refactoriser : Mettre dans la classe cercle::lecture()
     cout << "Point 1 : ";
     point1.lecture();
     
@@ -29,7 +27,40 @@ void Triangle::lecture()
     
     cout << "Point 3 : ";
     point2.lecture();
-    
+
+}
+
+// Get/Se
+Point Triangle::valPoint1()
+{
+    return point1;
+}
+
+Point Triangle::valPoint2()
+{
+    return point2;
+}
+
+Point Triangle::valPoint3()
+{
+    return point3;
+}
+
+int Triangle::valCouleur()
+{
+    return couleur;
+}
+
+void Triangle::changerPoints(Point p1, Point p2, Point p3)
+{
+    point1 = p1;
+    point2 = p2;
+    point3 = p3;
+}
+
+void Triangle::changerCouleur(int nouvelleCouleur)
+{
+    couleur = nouvelleCouleur;
 }
 
 string Triangle::toString()

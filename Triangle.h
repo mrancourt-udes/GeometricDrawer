@@ -1,10 +1,9 @@
-//
-//  Triangle.h
-//  tp6
-//
-//  Created by Martin Rancourt on 2014-11-22.
-//  Copyright (c) 2014 Martin Racnourt. All rights reserved.
-//
+/** **************************************************************
+ \file triangle.h
+ \author Martin Rancourt - 140 59 412
+ \author Guillaume Theaud - 131 97 685
+ \brief Fichier d'en-tete de la classe triangle
+ *****************************************************************/
 
 #ifndef __TRIANGLE_H__
 #define __TRIANGLE_H__
@@ -20,6 +19,7 @@ class Triangle
     Point point1;
     Point point2;
     Point point3;
+    int couleur;
     
     // Methodes publiques
     public:
@@ -27,6 +27,17 @@ class Triangle
     // Constructeurs
     Triangle();
     Triangle(Point, Point, Point);
+    
+    // Get/Set
+    Point valPoint1();
+    Point valPoint2();
+    Point valPoint3();
+    int valCouleur();
+    
+    void changerPoints(Point, Point, Point);
+    void changerCouleur(int);
+    
+    void Afficher();
     
     // Pour lecture
     void lecture();

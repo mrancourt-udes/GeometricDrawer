@@ -1,3 +1,9 @@
+/** **************************************************************
+ \file tp6.cpp
+ \author Martin Rancourt - 140 59 412
+ \author Guillaume Theaud - 131 97 685
+ \brief TODO : resume
+ *****************************************************************/
 
 #include <iostream>
 #include <string>
@@ -14,6 +20,9 @@ void ajouter(vector<Cercle> &, vector<Rectangle> &, vector<Triangle> &);
 void listerFigures(vector<Cercle> &, vector<Rectangle> &, vector<Triangle> &);
 void listerFigures(vector<Cercle> &, vector<Rectangle> &, vector<Triangle> &, int);
 void retirer(vector<Cercle> &, vector<Rectangle> &, vector<Triangle> &);
+void effectuerRotation ();
+void deplacer();
+void modifierTaille();
 
 // Declaration des constantes globales
 const char AJOUTER = 'a';
@@ -62,14 +71,17 @@ int main()
                 
             case EFFECTUER_ROTATION:
                 // Effectuer une rotation sur une figure
+                effectuerRotation();
                 break;
                 
             case DEPLACER:
                 // Deplacer une figure
+                deplacer();
                 break;
                 
             case MODIFIER_TAILLE:
                 // Modifier la taille d'une figure
+                modifierTaille();
                 break;
                 
             default:
@@ -100,9 +112,8 @@ void ajouter(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vector<Tria
     {
         case CERCLE:
         {
-            // Lecture des informations du cercle
             Cercle unCercle;
-            
+            // Lecture des informations du cercle
             unCercle.lecture();
             
             // Ajout du cercle a la liste
@@ -112,9 +123,8 @@ void ajouter(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vector<Tria
         }
         case RECTANGLE:
         {
-            // Lecture des informations du rectangle
             Rectangle unRectangle;
-            
+            // Lecture des informations du rectangle
             unRectangle.lecture();
             
             // Ajoutdu rectangle a la liste
@@ -124,9 +134,8 @@ void ajouter(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vector<Tria
         }
         case TRIANGLE:
         {
-            // Lecture des informations du triangle
             Triangle unTriangle;
-            
+            // Lecture des informations du triangle
             unTriangle.lecture();
             
             // Ajout du triangle a la liste
@@ -185,9 +194,9 @@ int obtenirType(bool afficherListe)
     if (afficherListe)
     {
         cout << "Types disponibles : " << endl;
-        cout << CERCLE << " " << TYPE_CERCLE << endl;
-        cout << RECTANGLE << " " << TYPE_RECTANGLE << endl;
-        cout << TRIANGLE << " " << TYPE_TRIANGLE << endl << endl;
+        cout << CERCLE << " " << " Cercle " << endl;
+        cout << RECTANGLE << " " << " Rectangle " << endl;
+        cout << TRIANGLE << " " << " Triangle " << endl << endl;
     }
     
     cout << "Veuillez choisir un type de figure : ";
@@ -238,7 +247,7 @@ int obtenirIndice(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vector
     cin >> indice;
     cout << TRAIN << indice << endl;
     
-    return type;
+    return indice;
 }
 
 
@@ -298,4 +307,19 @@ void listerFigures(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vecto
             cout << "/!\\ La liste ne contient aucun triangle." << endl;
         }
     }
+}
+
+void effectuerRotation ()
+{
+    // TODO : implementer la rotation de figures
+}
+
+void deplacer()
+{
+    // TODO : implementer le deplacement de figures
+}
+
+void modifierTaille()
+{
+    // TODO : implementer la modification de taille
 }

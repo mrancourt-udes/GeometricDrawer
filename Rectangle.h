@@ -1,10 +1,9 @@
-//
-//  Rectangle.h
-//  tp6
-//
-//  Created by Martin Rancourt on 2014-11-22.
-//  Copyright (c) 2014 Martin Racnourt. All rights reserved.
-//
+/** **************************************************************
+ \file rectangle
+ \author Martin Rancourt - 140 59 412
+ \author Guillaume Theaud - 131 97 685
+ \brief Fichier d'en-tete de la classe rectangle
+ *****************************************************************/
 
 #ifndef __RECTANGLE_H__
 #define __RECTANGLE_H__
@@ -18,11 +17,22 @@ class Rectangle
 {
     Point point1;
     Point point2;
+    int couleur;
     
 public:
     // Constructeurs
     Rectangle();
     Rectangle(Point, Point);
+    
+    // Get/Set
+    Point valPoint1();
+    Point valPoint2();
+    int valCouleur();
+    
+    void changerPoints(Point, Point);
+    void changerCouleur(int);
+    
+    void Afficher();
     
     // Pour lecture
     void lecture();

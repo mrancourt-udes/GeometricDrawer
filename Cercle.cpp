@@ -1,10 +1,9 @@
-//
-//  Cercle.cpp
-//  tp6
-//
-//  Created by Martin Rancourt on 2014-11-24.
-//  Copyright (c) 2014 Martin Racnourt. All rights reserved.
-//
+/** **************************************************************
+ \file cercle.cpp
+ \author Martin Rancourt - 140 59 412
+ \author Guillaume Theaud - 131 97 685
+ \brief Fichier d'implementation de la classe cercle
+ *****************************************************************/
 
 #include "Cercle.h"
 
@@ -13,17 +12,50 @@ Cercle::Cercle() {
     
 }
 
+Point Cercle::valCentre()
+{
+    return pointCentral;
+}
+
+float Cercle::valRayon()
+{
+    return rayon;
+}
+
+int Cercle::valCouleur()
+{
+    return couleur;
+}
+
+void Cercle::changerCentre(Point point)
+{
+    pointCentral = point;
+}
+
+void Cercle::changerRayon(float rayon) {
+    rayon = rayon;
+}
+
+void Cercle::changerCouleur(int couleur)
+{
+    couleur = couleur;
+}
+
 // Lectures des informations du cercle
 void Cercle::lecture()
 {
     Point pointCentral;
     
-    // A refactoriser : Mettre dans la classe cercle::lecture()
     cout << "Point central : ";
     pointCentral.lecture();
     
     cout << "Rayon : ";
     cin >> rayon;
+}
+
+void dessiner()
+{
+    
 }
 
 string Cercle::toString()
