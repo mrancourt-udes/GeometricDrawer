@@ -28,11 +28,16 @@ public:
     Point valPoint1();
     Point valPoint2();
     int valCouleur();
+    Point valCentre();
     
     void changerPoints(Point, Point);
     void changerCouleur(int);
     
-    void Afficher();
+    void effectuerRotation();
+    void deplacer();
+    void modifierTaille();
+    
+    void dessiner();
     
     // Pour lecture
     void lecture();

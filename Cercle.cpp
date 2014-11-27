@@ -53,7 +53,22 @@ void Cercle::lecture()
     cin >> rayon;
 }
 
-void dessiner()
+void Cercle::effectuerRotation()
+{
+    
+}
+
+void Cercle::deplacer()
+{
+    
+}
+
+void Cercle::modifierTaille()
+{
+    
+}
+
+void Cercle::dessiner()
 {
     
 }

@@ -35,6 +35,10 @@ public:
     void changerRayon(float);
     void changerCouleur(int);
     
+    void effectuerRotation();
+    void deplacer();
+    void modifierTaille();
+    
     void dessiner();
     
     // Pour lecture

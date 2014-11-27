@@ -51,6 +51,25 @@ int Triangle::valCouleur()
     return couleur;
 }
 
+Point Triangle::valCentre()
+{
+    
+    // Declaration des constantes
+    const int NB_POINTS = 3;
+    
+    // Todo : Corriger les calculs
+    int centreX;
+    int centreY;
+    
+    centreX = ((point1.valX() + point2.valX() + point3.valX()) / NB_POINTS);
+    centreY = ((point1.valY() + point2.valY() + point3.valY()) / NB_POINTS);
+    
+    Point pointCentral(centreX, centreY);
+    
+    return pointCentral;
+    
+}
+
 void Triangle::changerPoints(Point p1, Point p2, Point p3)
 {
     point1 = p1;
@@ -61,6 +80,26 @@ void Triangle::changerPoints(Point p1, Point p2, Point p3)
 void Triangle::changerCouleur(int nouvelleCouleur)
 {
     couleur = nouvelleCouleur;
+}
+
+void Triangle::effectuerRotation()
+{
+    
+}
+
+void Triangle::deplacer()
+{
+    
+}
+
+void Triangle::modifierTaille()
+{
+    
+}
+
+void Triangle::dessiner()
+{
+    
 }
 
 string Triangle::toString()

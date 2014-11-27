@@ -41,6 +41,24 @@ int Rectangle::valCouleur()
     return couleur;
 }
 
+Point Rectangle::valCentre()
+{
+    // Declaration des constantes
+    const int NB_POINTS = 2;
+    
+    // Todo : Corriger les calculs
+    int centreX;
+    int centreY;
+    
+    centreX = ((point1.valX() + point2.valX()) / NB_POINTS);
+    centreY = ((point1.valY() + point2.valY()) / NB_POINTS);
+    
+    Point pointCentral(centreX, centreY);
+    
+    return pointCentral;
+    
+}
+
 void Rectangle::changerPoints(Point p1, Point p2)
 {
     point1 = p1;
@@ -50,6 +68,26 @@ void Rectangle::changerPoints(Point p1, Point p2)
 void Rectangle::changerCouleur(int nouvelleCouleur)
 {
     couleur = nouvelleCouleur;
+}
+
+void Rectangle::effectuerRotation()
+{
+    
+}
+
+void Rectangle::deplacer()
+{
+    
+}
+
+void Rectangle::modifierTaille()
+{
+    
+}
+
+void Rectangle::dessiner()
+{
+    
 }
 
 string Rectangle::toString()

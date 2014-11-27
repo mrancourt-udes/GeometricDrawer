@@ -13,6 +13,7 @@
 
 #include "Point.h"
 
+
 class Triangle
 {
     // Membres prives
@@ -33,17 +34,21 @@ class Triangle
     Point valPoint2();
     Point valPoint3();
     int valCouleur();
+    Point valCentre();
     
     void changerPoints(Point, Point, Point);
     void changerCouleur(int);
     
-    void Afficher();
+    void effectuerRotation();
+    void deplacer();
+    void modifierTaille();
+    
+    void dessiner();
     
     // Pour lecture
     void lecture();
     
     void setCoordonnees(Point, Point, Point);
-    void dessiner();
     
     // Conversion de l'objet en string
     string toString();
