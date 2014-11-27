@@ -9,6 +9,7 @@
 #include <string>
 #include <vector>
 
+#include "canevas.h"
 #include "Cercle.h"
 #include "Rectangle.h"
 #include "Triangle.h"
@@ -19,10 +20,11 @@ using namespace std;
 void ajouter(vector<Cercle> &, vector<Rectangle> &, vector<Triangle> &);
 void listerFigures(vector<Cercle> &, vector<Rectangle> &, vector<Triangle> &);
 void listerFigures(vector<Cercle> &, vector<Rectangle> &, vector<Triangle> &, int);
+int obtenirIndice(vector<Cercle> &, vector<Rectangle> &, vector<Triangle> &, int, bool);
 void retirer(vector<Cercle> &, vector<Rectangle> &, vector<Triangle> &);
-void effectuerRotation ();
-void deplacer();
-void modifierTaille();
+void effectuerRotation(vector<Cercle> &, vector<Rectangle> &, vector<Triangle> &);
+void deplacer(vector<Cercle> &, vector<Rectangle> &, vector<Triangle> &);
+void modifierTaille(vector<Cercle> &, vector<Rectangle> &, vector<Triangle> &);
 
 // Declaration des constantes globales
 const char AJOUTER = 'a';
@@ -40,6 +42,9 @@ const string TYPE_RECTANGLE = "Rectangle";
 const string TYPE_TRIANGLE = "Triangle";
 const string TRAIN = ">> ";
 
+/** ----------------------------------------------------------------------
+ \brief Point d'entree du logiciel de dessin.
+ ----------------------------------------------------------------------- **/
 int main()
 {
     char commande;
@@ -71,17 +76,17 @@ int main()
                 
             case EFFECTUER_ROTATION:
                 // Effectuer une rotation sur une figure
-                effectuerRotation();
+                effectuerRotation(cercles, rectangles, triangles);
                 break;
                 
             case DEPLACER:
                 // Deplacer une figure
-                deplacer();
+                deplacer(cercles, rectangles, triangles);
                 break;
                 
             case MODIFIER_TAILLE:
                 // Modifier la taille d'une figure
-                modifierTaille();
+                modifierTaille(cercles, rectangles, triangles);
                 break;
                 
             default:
@@ -97,11 +102,17 @@ int main()
     }
 }
 
+/** ----------------------------------------------------------------------
+ \brief Ce module permet d'ajouter une figure a sa liste respective. Soit
+ un cercle, un rectangle ou un triangle.
+ \param [in/out] cercles : Liste des cercles
+ \param [in/out] rectangles : Liste des rectangles
+ \param [in/out] triangles : Liste des triangles
+ ----------------------------------------------------------------------- **/
 void ajouter(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vector<Triangle> &triangles)
 {
     // Declaration des fonctions prototypes
     int obtenirType(bool);
-    int obtenirIndice(vector<Cercle> &, vector<Rectangle> &, vector<Triangle> &, int, bool);
     
     // Declaration des variables
     int type;
@@ -148,12 +159,18 @@ void ajouter(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vector<Tria
     }
 }
 
+/** ----------------------------------------------------------------------
+ \brief Ce module permet de retirer une figure a sa liste respective. Soit
+ un cercle, un rectangle ou un triangle.
+ \param [in/out] cercles : Liste des cercles
+ \param [in/out] rectangles : Liste des rectangles
+ \param [in/out] triangles : Liste des triangles
+ ----------------------------------------------------------------------- **/
 void retirer(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vector<Triangle> &triangles)
 {
     
     // Declaration des fonctions prototypes
     int obtenirType(bool);
-    int obtenirIndice(vector<Cercle> &, vector<Rectangle> &, vector<Triangle> &, int, bool);
     
     // Declaration des variables
     int type;
@@ -187,6 +204,12 @@ void retirer(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vector<Tria
     }
 }
 
+/** ----------------------------------------------------------------------
+ \brief Ce module permet d'obtenir le type de figure a manipuler. Soit
+ un cercle, un rectangle ou un triangle.
+ \param [in] afficherListe : Indique si on affiche ou non la liste des 
+ choix possibles.
+ ----------------------------------------------------------------------- **/
 int obtenirType(bool afficherListe)
 {
     int type;
@@ -206,6 +229,17 @@ int obtenirType(bool afficherListe)
     return type;
 }
 
+/** ----------------------------------------------------------------------
+ \brief Ce module permet d'obtenir l'indice d'une figure patriculiere. Soit
+ un cercle, un rectangle ou un triangle, dependament du type de figure en
+ entree.
+ \param [in] cercles : Liste des cercles
+ \param [in] rectangles : Liste des rectangles
+ \param [in] triangles : Liste des triangles
+ \param [in] type : Type de la figure dont on veut recuperer l'indice
+ \param [in] afficherListe : Indique si on affiche ou non la liste des
+ indices possibles.
+ ----------------------------------------------------------------------- **/
 int obtenirIndice(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vector<Triangle> &triangles, int type, bool afficherListe)
 {
     
@@ -250,7 +284,15 @@ int obtenirIndice(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vector
     return indice;
 }
 
-
+/** ----------------------------------------------------------------------
+ \brief Ce module permet d'afficher la liste de toutes les figures dessines
+ a l'ecran.
+ \param [in] cercles : Liste des cercles
+ \param [in] rectangles : Liste des rectangles
+ \param [in] triangles : Liste des triangles
+ \param [in] type : Permet d'afficher une liste de figure specifique. 
+ ex : seulement la liste des cercles. (0 par defaut - soit toutes les listes)
+ ----------------------------------------------------------------------- **/
 void listerFigures(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vector<Triangle> &triangles, int type = 0)
 {
     if (type == 0 || type == CERCLE)
@@ -309,17 +351,139 @@ void listerFigures(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vecto
     }
 }
 
-void effectuerRotation ()
+/** ----------------------------------------------------------------------
+ \brief Ce module permet d'effectuer une rotation sur une figure.
+ \param [in/out] cercles : Liste des cercles
+ \param [in/out] rectangles : Liste des rectangles
+ \param [in/out] triangles : Liste des triangles
+ ----------------------------------------------------------------------- **/
+void effectuerRotation (vector<Cercle> &cercles, vector<Rectangle> &rectangles, vector<Triangle> &triangles)
 {
-    // TODO : implementer la rotation de figures
+
+    // Declaration des fonctions prototypes
+    int type = obtenirType(true);
+    int indice = obtenirIndice(cercles, rectangles, triangles, type, true);
+    
+    switch (type)
+    {
+        case CERCLE:
+            
+            // On eggectu la rotation sur le cercle
+            cercles.at(indice).effectuerRotation();
+            
+            break;
+        case RECTANGLE:
+            
+            // On eggectu la rotation sur le rectangle
+            rectangles.at(indice).effectuerRotation();
+            
+            break;
+        case TRIANGLE:
+
+            // On eggectu la rotation sur le triangle
+            triangles.at(indice).effectuerRotation();
+            break;
+            
+        default:
+            break;
+    }
 }
 
-void deplacer()
+/** ----------------------------------------------------------------------
+ \brief Ce module permet de deplacer une figure
+ \param [in/out] cercles : Liste des cercles
+ \param [in/out] rectangles : Liste des rectangles
+ \param [in/out] triangles : Liste des triangles
+ ----------------------------------------------------------------------- **/
+void deplacer(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vector<Triangle> &triangles)
 {
-    // TODO : implementer le deplacement de figures
+    // Declaration des fonctions prototypes
+    int type = obtenirType(true);
+    int indice = obtenirIndice(cercles, rectangles, triangles, type, true);
+    
+    switch (type)
+    {
+        case CERCLE:
+            
+            // On eggectu la rotation sur le cercle
+            cercles.at(indice).deplacer();
+            
+            break;
+        case RECTANGLE:
+            
+            // On eggectu la rotation sur le rectangle
+            rectangles.at(indice).deplacer();
+            
+            break;
+        case TRIANGLE:
+            
+            // On eggectu la rotation sur le triangle
+            triangles.at(indice).deplacer();
+            break;
+            
+        default:
+            break;
+    }
 }
 
-void modifierTaille()
+/** ----------------------------------------------------------------------
+ \brief Ce module permet de modifier la taille d'une figure
+ \param [in/out] cercles : Liste des cercles
+ \param [in/out] rectangles : Liste des rectangles
+ \param [in/out] triangles : Liste des triangles
+ ----------------------------------------------------------------------- **/
+void modifierTaille(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vector<Triangle> &triangles)
 {
-    // TODO : implementer la modification de taille
+    // Declaration des fonctions prototypes
+    int type = obtenirType(true);
+    int indice = obtenirIndice(cercles, rectangles, triangles, type, true);
+    
+    switch (type)
+    {
+        case CERCLE:
+            
+            // On eggectu la rotation sur le cercle
+            cercles.at(indice).modifierTaille();
+            
+            break;
+        case RECTANGLE:
+            
+            // On eggectu la rotation sur le rectangle
+            rectangles.at(indice).modifierTaille();
+            
+            break;
+        case TRIANGLE:
+            
+            // On eggectu la rotation sur le triangle
+            triangles.at(indice).modifierTaille();
+            break;
+            
+        default:
+            break;
+    }
+}
+
+/** ----------------------------------------------------------------------
+ \brief Ce module dessine toutes les figures sur le canevas
+ \param [in/out] cercles : Liste des cercles
+ \param [in/out] rectangles : Liste des rectangles
+ \param [in/out] triangles : Liste des triangles
+ ----------------------------------------------------------------------- **/
+void dessinerFigures (Canevas canevas, vector<Cercle> &cercles, vector<Rectangle> &rectangles, vector<Triangle> &triangles)
+{
+    // On redessine toutes les figures sur le canvas
+    for (int i = 0; i < cercles.size(); i++)
+    {
+        cercles.at(i).dessiner();
+    }
+    
+    for (int i = 0; i < rectangles.size(); i++)
+    {
+        rectangles.at(i).dessiner();
+    }
+    
+    for (int i = 0; i < triangles.size(); i++)
+    {
+        triangles.at(i).dessiner();
+    }
 }
