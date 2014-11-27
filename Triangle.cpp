@@ -7,9 +7,27 @@
 
 #include "Triangle.h"
 
+// Constructeur par defaut
 Triangle::Triangle()
 {
-    
+    point1 = Point(0, 0);
+    point2 = Point(0, 0);
+    point3 = Point(0, 0);
+}
+
+Triangle::Triangle(Point point1, Point point2, Point point3)
+{
+    this->point1 = point1;
+    this->point2 = point2;
+    this->point3 = point3;
+}
+
+Triangle::Triangle(Point point1, Point point2, Point point3, int couleur)
+{
+    this->point1 = point1;
+    this->point2 = point2;
+    this->point3 = point3;
+    this->couleur = couleur;
 }
 
 // Lectures des informations du rectangle
@@ -27,7 +45,6 @@ void Triangle::lecture()
     
     cout << "Point 3 : ";
     point2.lecture();
-
 }
 
 // Get/Se
@@ -67,7 +84,6 @@ Point Triangle::valCentre()
     Point pointCentral(centreX, centreY);
     
     return pointCentral;
-    
 }
 
 void Triangle::changerPoints(Point p1, Point p2, Point p3)

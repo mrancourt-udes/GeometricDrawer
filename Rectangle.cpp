@@ -7,9 +7,24 @@
 
 #include "Rectangle.h"
 
+// Constructeur par defaut
 Rectangle::Rectangle()
 {
-    
+    point1 = Point(0, 0);
+    point2 = Point(0, 0);
+}
+
+Rectangle::Rectangle(Point point1, Point point2)
+{
+    this->point1 = point1;
+    this->point2 = point2;
+}
+
+Rectangle::Rectangle(Point point1, Point point2, int couleur)
+{
+    this->point1 = point1;
+    this->point2 = point2;
+    this->couleur = couleur;
 }
 
 // Lectures des informations du rectangle
@@ -56,7 +71,6 @@ Point Rectangle::valCentre()
     Point pointCentral(centreX, centreY);
     
     return pointCentral;
-    
 }
 
 void Rectangle::changerPoints(Point p1, Point p2)

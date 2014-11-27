@@ -24,6 +24,7 @@ public:
     // Constructeurs
     Rectangle();
     Rectangle(Point, Point);
+    Rectangle(Point, Point, int);
     
     // Getters
     Point valPoint1();

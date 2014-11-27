@@ -28,6 +28,7 @@ class Triangle
     // Constructeurs
     Triangle();
     Triangle(Point, Point, Point);
+    Triangle(Point, Point, Point, int);
     
     // Getters
     Point valPoint1();

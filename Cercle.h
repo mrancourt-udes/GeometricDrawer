@@ -29,6 +29,7 @@ public:
     // Constructeurs
     Cercle();
     Cercle(Point, float);
+    Cercle(Point, float, int);
     
     // Getters
     Point valCentre();

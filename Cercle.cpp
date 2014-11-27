@@ -8,8 +8,23 @@
 #include "Cercle.h"
 
 // Constructeur par defaut
-Cercle::Cercle() {
-    
+Cercle::Cercle()
+{
+    pointCentral = Point(0, 0);
+    rayon = 0;
+}
+
+Cercle::Cercle(Point pointCentral, float rayon)
+{
+    this->pointCentral = pointCentral;
+    this->rayon = rayon;
+}
+
+Cercle::Cercle(Point pointCentral, float rayon, int couleur)
+{
+    this->pointCentral = pointCentral;
+    this->rayon = rayon;
+    this->couleur = couleur;
 }
 
 Point Cercle::valCentre()
