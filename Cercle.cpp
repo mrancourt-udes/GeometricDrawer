@@ -88,7 +88,7 @@ void Cercle::dessiner()
     
 }
 
-string Cercle::toString()
+string Cercle::enString()
 {
     string str =
     "Point central : (" + to_string(pointCentral.valX()) + "," + to_string(pointCentral.valY()) + ") \n" +

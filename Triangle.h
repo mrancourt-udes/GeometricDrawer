@@ -37,7 +37,9 @@ class Triangle
     int valCouleur();
     
     // Setters
-    void changerPoints(Point, Point, Point);
+    void changerPoint1(Point);
+    void changerPoint2(Point);
+    void changerPoint3(Point);
     void changerCouleur(int);
     
     // Methode qui calcule la valeur centrale du triangle
@@ -46,7 +48,7 @@ class Triangle
     // Methode pour effectuer une rotation sur un triangle
     void effectuerRotation();
     
-    // Methode pour deplacer un cercle
+    // Methode pour deplacer un triangle
     void deplacer();
     
     // Methode pour modifier la taille d'un triangle
@@ -58,10 +60,8 @@ class Triangle
     // Pour lecture
     void lecture();
     
-    void setCoordonnees(Point, Point, Point);
-    
     // Conversion de l'objet en string
-    string toString();
+    string enString();
     
 };
 

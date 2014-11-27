@@ -86,11 +86,19 @@ Point Triangle::valCentre()
     return pointCentral;
 }
 
-void Triangle::changerPoints(Point p1, Point p2, Point p3)
+void Triangle::changerPoint1(Point point)
 {
-    point1 = p1;
-    point2 = p2;
-    point3 = p3;
+    point1 = point;
+}
+
+void Triangle::changerPoint2(Point point)
+{
+    point2 = point;
+}
+
+void Triangle::changerPoint3(Point point)
+{
+    point3 = point;
 }
 
 void Triangle::changerCouleur(int nouvelleCouleur)
@@ -118,7 +126,7 @@ void Triangle::dessiner()
     
 }
 
-string Triangle::toString()
+string Triangle::enString()
 {
     string str =
     "Point 1 : (" + to_string(point1.valX()) + "," + to_string(point1.valY()) + ") \n" +

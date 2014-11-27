@@ -73,10 +73,14 @@ Point Rectangle::valCentre()
     return pointCentral;
 }
 
-void Rectangle::changerPoints(Point p1, Point p2)
+void Rectangle::changerPoint1(Point point)
 {
-    point1 = p1;
-    point2 = p2;
+    point1 = point;
+}
+
+void Rectangle::changerPoint2(Point point)
+{
+    point2 = point;
 }
 
 void Rectangle::changerCouleur(int nouvelleCouleur)
@@ -104,7 +108,7 @@ void Rectangle::dessiner()
     
 }
 
-string Rectangle::toString()
+string Rectangle::enString()
 {
     string str =
     "Point 1 : (" + to_string(point1.valX()) + "," + to_string(point1.valY()) + ") \n" +

@@ -301,7 +301,7 @@ void listerFigures(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vecto
         if (cercles.size() > 0) {
             for (int i = 0; i < cercles.size(); i++)
             {
-                cout << "Cercle " << i << endl << cercles.at(i).toString();
+                cout << "Cercle " << i << endl << cercles.at(i).enString();
             }
         }
         else
@@ -320,7 +320,7 @@ void listerFigures(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vecto
         if (rectangles.size() > 0) {
             for (int i = 0; i < rectangles.size(); i++)
             {
-                cout << "Rectangle " << i << endl << rectangles.at(i).toString();
+                cout << "Rectangle " << i << endl << rectangles.at(i).enString();
             }
         }
         else
@@ -338,7 +338,7 @@ void listerFigures(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vecto
         if (triangles.size() > 0) {
             for (int i = 0; i < triangles.size(); i++)
             {
-                cout << "Triangle " << i << endl << triangles.at(i).toString();
+                cout << "Triangle " << i << endl << triangles.at(i).enString();
             }
         }
         else

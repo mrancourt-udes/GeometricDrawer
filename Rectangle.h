@@ -32,7 +32,8 @@ public:
     int valCouleur();
     
     // Setters
-    void changerPoints(Point, Point);
+    void changerPoint1(Point);
+    void changerPoint2(Point);
     void changerCouleur(int);
     
     // Methode qui calcule la valeur centrale du rectangle
@@ -54,7 +55,7 @@ public:
     void lecture();
     
     // Conversion de l'objet en string
-    string toString();
+    string enString();
 };
 
 #endif /* defined(__RECTANGLE_H__) */

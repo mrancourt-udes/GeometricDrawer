@@ -57,7 +57,7 @@ public:
     void lecture();
     
     // Conversion de l'objet en string
-    string toString();
+    string enString();
 };
 
 #endif /* defined(__CERCLE_H_) */
