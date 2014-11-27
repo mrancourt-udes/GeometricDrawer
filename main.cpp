@@ -37,9 +37,6 @@ const char QUITTER = 'q';
 const int CERCLE = 1;
 const int RECTANGLE = 2;
 const int TRIANGLE = 3;
-const string TYPE_CERCLE = "Cercle";
-const string TYPE_RECTANGLE = "Rectangle";
-const string TYPE_TRIANGLE = "Triangle";
 const string TRAIN = ">> ";
 
 /** ----------------------------------------------------------------------
