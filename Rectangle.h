@@ -15,6 +15,7 @@
 
 class Rectangle
 {
+    // Attributs
     Point point1;
     Point point2;
     int couleur;
@@ -24,19 +25,28 @@ public:
     Rectangle();
     Rectangle(Point, Point);
     
-    // Get/Set
+    // Getters
     Point valPoint1();
     Point valPoint2();
     int valCouleur();
-    Point valCentre();
     
+    // Setters
     void changerPoints(Point, Point);
     void changerCouleur(int);
     
+    // Methode qui calcule la valeur centrale du rectangle
+    Point valCentre();
+    
+    // Methode pour effectuer une rotation sur un rectangle
     void effectuerRotation();
+    
+    // Methode pour deplacer un rectangle
     void deplacer();
+    
+    // Methode pour modifier la taille d'un rectangle
     void modifierTaille();
     
+    // Methode pour dessiner un cercle
     void dessiner();
     
     // Pour lecture

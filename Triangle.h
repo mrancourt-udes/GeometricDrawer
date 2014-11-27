@@ -29,20 +29,29 @@ class Triangle
     Triangle();
     Triangle(Point, Point, Point);
     
-    // Get/Set
+    // Getters
     Point valPoint1();
     Point valPoint2();
     Point valPoint3();
     int valCouleur();
-    Point valCentre();
     
+    // Setters
     void changerPoints(Point, Point, Point);
     void changerCouleur(int);
     
+    // Methode qui calcule la valeur centrale du triangle
+    Point valCentre();
+    
+    // Methode pour effectuer une rotation sur un triangle
     void effectuerRotation();
+    
+    // Methode pour deplacer un cercle
     void deplacer();
+    
+    // Methode pour modifier la taille d'un triangle
     void modifierTaille();
     
+    // Methode pour dessiner un triangle
     void dessiner();
     
     // Pour lecture

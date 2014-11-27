@@ -15,8 +15,12 @@
 
 using namespace std;
 
+/** ----------------------------------------------------------------------
+ \brief Definition de la classe cercle (entetes)
+ ----------------------------------------------------------------------- **/
 class Cercle
 {
+    // Attributs
     Point pointCentral;
     float rayon;
     int couleur;
@@ -26,19 +30,26 @@ public:
     Cercle();
     Cercle(Point, float);
     
-    // Get/Set
+    // Getters
     Point valCentre();
     float valRayon();
     int   valCouleur();
     
+    // Setters
     void changerCentre(Point);
     void changerRayon(float);
     void changerCouleur(int);
     
+    // Methode pour effectuer une rotation sur un cercle
     void effectuerRotation();
+    
+    // Methode pour deplacer un cercle
     void deplacer();
+    
+    // Methode pour modifier la taille d'un cercle
     void modifierTaille();
     
+    // Methode pour dessiner un cercle
     void dessiner();
     
     // Pour lecture
