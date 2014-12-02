@@ -66,4 +66,4 @@ class Triangle
     
 };
 
-#endif /* defined(__TRIANGLE_H__) */
+#endif /* __TRIANGLE_H__ */

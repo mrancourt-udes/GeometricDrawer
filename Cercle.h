@@ -5,8 +5,8 @@
  \brief Fichier d'en-tete de la classe cercle
  *****************************************************************/
 
-#ifndef __CERCLE_H_
-#define __CERCLE_H_
+#ifndef __CERCLE_H__
+#define __CERCLE_H__
 
 #include <string>
 
@@ -57,4 +57,4 @@ public:
     string enString();
 };
 
-#endif /* defined(__CERCLE_H_) */
+#endif /* __CERCLE_H__ */

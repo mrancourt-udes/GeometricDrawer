@@ -69,4 +69,4 @@ public:
     string enString();
 };
 
-#endif /* defined(__RECTANGLE_H__) */
+#endif /* __RECTANGLE_H__ */
