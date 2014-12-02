@@ -31,12 +31,9 @@ Rectangle::Rectangle(Point point1, Point point2, int couleur)
 }
 
 void Rectangle::init()
-{
-    // Calcul de la difference en X des deux points en diagonale
-    int deltaX = point2.valX() - point1.valX();
-    
-    point3.init(point1.valX() + deltaX, point2.valY());
-    point4.init(point1.valX(), point1.valY());
+{    
+    point3.init(point2.valX(), point1.valY());
+    point4.init(point1.valX(), point2.valY());
 }
 
 // Lectures des informations du rectangle
@@ -47,6 +44,9 @@ void Rectangle::lecture()
 
     cout << "Point 2 : ";
     point2.lecture();
+    
+    // Initialisation des points 3 et 4
+    init();
 }
 
 // Get/Set
@@ -158,8 +158,10 @@ void Rectangle::dessiner(Canevas canevas)
 string Rectangle::enString()
 {
     string str =
-    "Point 1 : (" + to_string(point1.valX()) + "," + to_string(point1.valY()) + ") \n" +
-    "Point 2 : (" + to_string(point2.valX()) + "," + to_string(point2.valY()) + ") \n";
+    "(" + to_string(point1.valX()) + "," + to_string(point1.valY()) + ")-" +
+    "(" + to_string(point3.valX()) + "," + to_string(point3.valY()) + ")\n" +
+    "(" + to_string(point4.valX()) + "," + to_string(point4.valY()) + ")-"+
+    "(" + to_string(point2.valX()) + "," + to_string(point2.valY()) + ")\n";
     
     return str;
 }
