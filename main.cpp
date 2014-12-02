@@ -398,13 +398,13 @@ void effectuerRotation (vector<Cercle> &cercles, vector<Rectangle> &rectangles, 
     {
         case RECTANGLE:
             
-            // On eggectu la rotation sur le rectangle
+            // On effectu la rotation sur le rectangle
             rectangles.at(indice).effectuerRotation(angleRadian);
             
             break;
         case TRIANGLE:
             
-            // On eggectu la rotation sur le triangle
+            // On effectu la rotation sur le triangle
             triangles.at(indice).effectuerRotation(angleRadian);
             break;
             
@@ -441,19 +441,19 @@ void deplacer(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vector<Tri
     {
         case CERCLE:
             
-            // On eggectu la rotation sur le cercle
+            // On effectu la rotation sur le cercle
             cercles.at(indice).deplacer(deltaX, deltaY);
             
             break;
         case RECTANGLE:
             
-            // On eggectu la rotation sur le rectangle
+            // On effectu la rotation sur le rectangle
             rectangles.at(indice).deplacer(deltaX, deltaY);
             
             break;
         case TRIANGLE:
             
-            // On eggectu la rotation sur le triangle
+            // On effectu la rotation sur le triangle
             triangles.at(indice).deplacer(deltaX, deltaY);
             break;
             
@@ -490,19 +490,19 @@ void modifierTaille(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vect
     {
         case CERCLE:
             
-            // On eggectu la rotation sur le cercle
+            // On effectu la rotation sur le cercle
             cercles.at(indice).modifierTaille(pointCentral, proportion);
             
             break;
         case RECTANGLE:
             
-            // On eggectu la rotation sur le rectangle
+            // On effectu la rotation sur le rectangle
             rectangles.at(indice).modifierTaille(pointCentral, proportion);
             
             break;
         case TRIANGLE:
             
-            // On eggectu la rotation sur le triangle
+            // On effectu la rotation sur le triangle
             triangles.at(indice).modifierTaille(pointCentral, proportion);
             break;
             
@@ -536,10 +536,22 @@ void dessinerFigures (Canevas canevas, vector<Cercle> &cercles, vector<Rectangle
     }
 }
 
+/** ----------------------------------------------------------------------
+ \brief Ce module dessine toutes les figures sur le canevas
+ \param [in] degree : Degree a convertir en radian
+ \return degreeRadian : Resultat de la conversion de degree en radian
+ ----------------------------------------------------------------------- **/
 float degreeEnRadians(int degree)
 {
+    // Declaration des constantes
     const float PI = 3.1416;
     const int DIVISEUR = 180;
     
-    return degree * PI / DIVISEUR;
+    // Declaration des variables
+    float degreeRadian;
+    
+    // Conversion
+    degreeRadian = degree * PI / DIVISEUR;
+    
+    return degreeRadian;
 }
