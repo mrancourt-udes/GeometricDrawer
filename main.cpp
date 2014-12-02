@@ -46,6 +46,7 @@ const string TRAIN = ">> ";
  ----------------------------------------------------------------------- **/
 int main()
 {
+    // Declaration des variables
     char commande;
     Canevas canevas;
     vector<Cercle> cercles;
@@ -57,8 +58,10 @@ int main()
     cin >> commande;
     cout << TRAIN + commande << endl;
     
+    // Tant que la sentinelle de terminaison de programme n'est pas atteinte
     while (commande != QUITTER)
     {
+        // Selon la commande entree
         switch (commande) {
             case AJOUTER:
                 // Ajout de la figure
@@ -110,6 +113,7 @@ int main()
                 break;
                 
             default:
+                // Commande invalide
                 cout << "La commande entree est invalide." << endl;
                 break;
         }
@@ -137,8 +141,10 @@ void ajouter(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vector<Tria
     // Declaration des variables
     int type;
     
+    // Obtention des donnees necessaire a l'ajout
     type = obtenirType(true);
     
+    // Selon le type de la figure
     switch (type)
     {
         case CERCLE:
@@ -175,6 +181,7 @@ void ajouter(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vector<Tria
             break;
         }
         default:
+            cout << "Erreur, le type de figure est inconnu!!";
             break;
     }
 }
@@ -196,9 +203,11 @@ void retirer(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vector<Tria
     int type;
     int indice;
     
+    // Obtention des donnees necessaire a la suppression
     type = obtenirType(true);
     indice = obtenirIndice(cercles, rectangles, triangles, type, true);
     
+    // Selon le type de la figure
     switch (type)
     {
         case CERCLE:
@@ -220,6 +229,7 @@ void retirer(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vector<Tria
             break;
         }
         default:
+            cout << "Erreur, le type de figure est inconnu!!";
             break;
     }
 }
@@ -227,13 +237,15 @@ void retirer(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vector<Tria
 /** ----------------------------------------------------------------------
  \brief Ce module permet d'obtenir le type de figure a manipuler. Soit
  un cercle, un rectangle ou un triangle.
- \param [in] afficherListe : Indique si on affiche ou non la liste des 
+ \param [in] afficherListe : Indique si on affiche ou non la liste des
  choix possibles.
  ----------------------------------------------------------------------- **/
 int obtenirType(bool afficherListe)
 {
+    // Declaration des variables
     int type;
     
+    // Si on veut afficher la liste des choix possible
     if (afficherListe)
     {
         cout << "Types disponibles : " << endl;
@@ -269,8 +281,10 @@ int obtenirIndice(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vector
     // Declaration des variables locales
     int indice;
     
+    // Si on veut afficher la liste des figures
     if (afficherListe)
     {
+        // Selon le type de la figure
         switch (type)
         {
             case CERCLE:
@@ -293,6 +307,7 @@ int obtenirIndice(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vector
                 break;
                 
             default:
+                cout << "Erreur, le type de figure est inconnu!!";
                 break;
         }
     }
@@ -310,11 +325,12 @@ int obtenirIndice(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vector
  \param [in] cercles : Liste des cercles
  \param [in] rectangles : Liste des rectangles
  \param [in] triangles : Liste des triangles
- \param [in] type : Permet d'afficher une liste de figure specifique. 
+ \param [in] type : Permet d'afficher une liste de figure specifique.
  ex : seulement la liste des cercles. (0 par defaut - soit toutes les listes)
  ----------------------------------------------------------------------- **/
 void listerFigures(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vector<Triangle> &triangles, int type = 0)
 {
+    // Si le type n'est pas specifie ou si le type est 1 (cercle)
     if (type == 0 || type == CERCLE)
     {
         cout << endl << "---------------" << endl;
@@ -333,6 +349,7 @@ void listerFigures(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vecto
         }
     }
     
+    // Si le type n'est pas specifie ou si le type est 2 (rectangle)
     if (type == 0 || type == RECTANGLE)
     {
         
@@ -352,6 +369,7 @@ void listerFigures(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vecto
         }
     }
     
+    // Si le type n'est pas specifie ou si le type est 3 (triangle)
     if (type == 0 || type == TRIANGLE)
     {
         cout << endl << "---------------" << endl;
@@ -379,23 +397,32 @@ void listerFigures(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vecto
  ----------------------------------------------------------------------- **/
 void effectuerRotation (vector<Cercle> &cercles, vector<Rectangle> &rectangles, vector<Triangle> &triangles)
 {
-
+    
     // Declaration des fonctions prototypes
     int type = obtenirType(true);
     int indice = obtenirIndice(cercles, rectangles, triangles, type, true);
     float degreeEnRadians(int);
     
+    // Declaration des variables
     int angle;
     float angleRadian;
     
+    // Lecture de l'angle de rotation (en degrees)
     cout << "Angle de rotation : ";
     cin >> angle;
     cout << TRAIN << angle << endl;
     
+    // Conversion des degrees en radians
     angleRadian = degreeEnRadians(angle);
     
+    // Selon le type de la figure
     switch (type)
     {
+        case CERCLE:
+            // La rotation sur le cercle est inutile.
+            // On verifie quand meme pour eviter d'avoir une erreur de type inconnu.
+            break;
+            
         case RECTANGLE:
             
             // On effectu la rotation sur le rectangle
@@ -409,6 +436,7 @@ void effectuerRotation (vector<Cercle> &cercles, vector<Rectangle> &rectangles, 
             break;
             
         default:
+            cout << "Erreur, le type de figure est inconnu!!";
             break;
     }
 }
@@ -425,9 +453,11 @@ void deplacer(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vector<Tri
     int type = obtenirType(true);
     int indice = obtenirIndice(cercles, rectangles, triangles, type, true);
     
+    // Declaration des variables
     int deltaX;
     int deltaY;
     
+    // Lecture des du deplacement en x et y
     cout << "Deplacement en x : ";
     cin >> deltaX;
     cout << TRAIN << deltaX << endl;
@@ -435,8 +465,8 @@ void deplacer(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vector<Tri
     cout << "Deplacement en y : ";
     cin >> deltaY;
     cout << TRAIN << deltaY << endl;
-
     
+    // Selon le type de la figure
     switch (type)
     {
         case CERCLE:
@@ -458,6 +488,7 @@ void deplacer(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vector<Tri
             break;
             
         default:
+            cout << "Erreur, le type de figure est inconnu!!";
             break;
     }
 }
@@ -476,16 +507,19 @@ void modifierTaille(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vect
     Point pointCentral;
     float proportion;
     
+    // Lecture du point central de modification
     cout << "Point central de modification : ";
     pointCentral.lecture();
     cout << TRAIN;
     pointCentral.afficher();
     cout << endl;
     
+    // Lecture de la proportion
     cout << "Proportion : ";
     cin >> proportion;
     cout << TRAIN << proportion << endl;
     
+    // Selon le type de la figure
     switch (type)
     {
         case CERCLE:
@@ -507,6 +541,7 @@ void modifierTaille(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vect
             break;
             
         default:
+            cout << "Erreur, le type de figure est inconnu!!";
             break;
     }
 }
