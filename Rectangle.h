@@ -8,11 +8,12 @@
 #ifndef __RECTANGLE_H__
 #define __RECTANGLE_H__
 
-#include <stdio.h>
 #include <string>
 
 #include "Point.h"
 #include "canevas.h"
+
+using namespace std;
 
 class Rectangle
 {
@@ -50,7 +51,7 @@ public:
     Point valCentre();
     
     // Methode pour effectuer une rotation sur un rectangle
-    void effectuerRotation(float);
+    void effectuerRotation(Point, float);
     
     // Methode pour deplacer un rectangle
     void deplacer(int deltaX, int deltaY);
@@ -59,7 +60,7 @@ public:
     void modifierTaille(Point, float);
     
     // Methode pour dessiner un cercle
-    void dessiner(Canevas);
+    void dessiner(Canevas &);
     
     // Pour lecture
     void lecture();

@@ -5,7 +5,10 @@
  \brief Fichier d'implementation de la classe triangle
  *****************************************************************/
 
+#include <cmath>
+
 #include "Triangle.h"
+#include "ligne.h"
 
 // Constructeur par defaut
 Triangle::Triangle()
@@ -40,7 +43,7 @@ void Triangle::lecture()
     point2.lecture();
     
     cout << "Point 3 : ";
-    point2.lecture();
+    point3.lecture();
 }
 
 // Get/Se
@@ -102,11 +105,11 @@ void Triangle::changerCouleur(int nouvelleCouleur)
     couleur = nouvelleCouleur;
 }
 
-void Triangle::effectuerRotation(float angleRadian)
+void Triangle::effectuerRotation(Point pointCentral, float angleRadian)
 {
-    point1.rotation(valCentre(), angleRadian);
-    point2.rotation(valCentre(), angleRadian);
-    point3.rotation(valCentre(), angleRadian);
+    point1.rotation(pointCentral, angleRadian);
+    point2.rotation(pointCentral, angleRadian);
+    point3.rotation(pointCentral, angleRadian);
 }
 
 void Triangle::deplacer(int dx, int dy)
@@ -123,7 +126,7 @@ void Triangle::modifierTaille(Point pointCentral, int proportion)
     point3.deplacementProp(pointCentral, proportion);
 }
 
-void Triangle::dessiner(Canevas canevas)
+void Triangle::dessiner(Canevas &canevas)
 {
     // Premiere ligne
     Ligne ligne(point1, point2);

@@ -8,12 +8,12 @@
 #ifndef __TRIANGLE_H__
 #define __TRIANGLE_H__
 
-#include <stdio.h>
 #include <string>
 
-#include "Point.h"
 #include "canevas.h"
-#include "ligne.h"
+#include "Point.h"
+
+using namespace std;
 
 class Triangle
 {
@@ -47,7 +47,7 @@ class Triangle
     Point valCentre();
     
     // Methode pour effectuer une rotation sur un triangle
-    void effectuerRotation(float);
+    void effectuerRotation(Point, float);
     
     // Methode pour deplacer un triangle
     void deplacer(int deltaX, int deltaY);
@@ -56,7 +56,7 @@ class Triangle
     void modifierTaille(Point, int);
     
     // Methode pour dessiner un triangle
-    void dessiner(Canevas);
+    void dessiner(Canevas &);
     
     // Pour lecture
     void lecture();

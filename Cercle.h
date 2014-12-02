@@ -8,12 +8,10 @@
 #ifndef __CERCLE_H_
 #define __CERCLE_H_
 
-#include <stdio.h>
 #include <string>
-#include <cmath>
 
-#include "Point.h"
 #include "canevas.h"
+#include "Point.h"
 
 using namespace std;
 
@@ -50,7 +48,7 @@ public:
     void modifierTaille(Point, float);
     
     // Methode pour dessiner un cercle
-    void dessiner(Canevas);
+    void dessiner(Canevas &);
     
     // Pour lecture
     void lecture();

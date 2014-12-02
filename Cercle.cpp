@@ -6,8 +6,10 @@
  *****************************************************************/
 
 #include <cmath>
+
 #include "Cercle.h"
 #include "ligne.h"
+
 
 // Constructeur par defaut
 Cercle::Cercle()
@@ -79,21 +81,21 @@ void Cercle::modifierTaille(Point pointCentralModification, float proportion)
     rayon *= proportion;
 }
 
-void Cercle::dessiner(Canevas canevas)
+void Cercle::dessiner(Canevas &canevas)
 {
     
-    const int NB_ANGLES = 40;
+    const int NB_ANGLES = 90;
     const int TOUR_COMPLET = 360;
     
-    int alpha = 0;
-    int epsilon = NB_ANGLES / TOUR_COMPLET;
+    float alpha = 0;
+    float epsilon = float(NB_ANGLES) / float(TOUR_COMPLET);
     
     for (int i = 0; i < NB_ANGLES; i++)
     {
         int p1X = pointCentral.valX() + (rayon * cos(alpha));
-        int p1Y = pointCentral.valY() + (rayon * cos(alpha));
+        int p1Y = pointCentral.valY() + (rayon * sin(alpha));
         int p2X = pointCentral.valX() + (rayon * cos(alpha + epsilon));
-        int p2Y = pointCentral.valY() + (rayon * cos(alpha + epsilon));
+        int p2Y = pointCentral.valY() + (rayon * sin(alpha + epsilon));
         
         Point p1(p1X, p1Y);
         Point p2(p2X, p2Y);

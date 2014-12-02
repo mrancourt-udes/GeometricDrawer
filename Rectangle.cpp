@@ -5,6 +5,8 @@
  \brief Fichier d'implementation de la classe rectangle
  *****************************************************************/
 
+#include <cmath>
+
 #include "Rectangle.h"
 #include "ligne.h"
 
@@ -117,12 +119,12 @@ void Rectangle::changerCouleur(int nouvelleCouleur)
     couleur = nouvelleCouleur;
 }
 
-void Rectangle::effectuerRotation(float angleRadian)
+void Rectangle::effectuerRotation(Point pointCentral, float angleRadian)
 {
-    point1.rotation(valCentre(), angleRadian);
-    point2.rotation(valCentre(), angleRadian);
-    point3.rotation(valCentre(), angleRadian);
-    point4.rotation(valCentre(), angleRadian);
+    point1.rotation(pointCentral, angleRadian);
+    point2.rotation(pointCentral, angleRadian);
+    point3.rotation(pointCentral, angleRadian);
+    point4.rotation(pointCentral, angleRadian);
 }
 
 void Rectangle::deplacer(int dx, int dy)
@@ -139,20 +141,23 @@ void Rectangle::modifierTaille(Point pointCentral, float proportion)
     point4.deplacementProp(pointCentral, proportion);
 }
 
-void Rectangle::dessiner(Canevas canevas)
+void Rectangle::dessiner(Canevas &canevas)
 {
     // Premiere ligne
     Ligne ligne(point1, point3);
     ligne.afficher(canevas);
     
     // Deuxieme ligne
-    ligne.init(point3, point2);
+    Ligne ligne2(point3, point2);
+    ligne2.afficher(canevas);
     
     // Troisieme ligne
-    ligne.init(point3, point4);
+    Ligne ligne3(point2, point4);
+    ligne3.afficher(canevas);
     
     // Quatrieme ligne
-    ligne.init(point4, point1);
+    Ligne ligne4(point4, point1);
+    ligne4.afficher(canevas);
 }
 
 string Rectangle::enString()

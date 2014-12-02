@@ -26,7 +26,7 @@ void retirer(vector<Cercle> &, vector<Rectangle> &, vector<Triangle> &);
 void effectuerRotation(vector<Cercle> &, vector<Rectangle> &, vector<Triangle> &);
 void deplacer(vector<Cercle> &, vector<Rectangle> &, vector<Triangle> &);
 void modifierTaille(vector<Cercle> &, vector<Rectangle> &, vector<Triangle> &);
-void dessinerFigures (Canevas canevas, vector<Cercle> &, vector<Rectangle> &, vector<Triangle> &);
+void dessinerFigures (Canevas &, vector<Cercle> &, vector<Rectangle> &, vector<Triangle> &);
 
 // Declaration des constantes globales
 const char AJOUTER = 'a';
@@ -406,6 +406,11 @@ void effectuerRotation (vector<Cercle> &cercles, vector<Rectangle> &rectangles, 
     // Declaration des variables
     int angle;
     float angleRadian;
+    Point pointCentral;
+    
+    // Lecture du point central de rotation
+    cout << "Point de rotation central";
+    pointCentral.lecture();
     
     // Lecture de l'angle de rotation (en degrees)
     cout << "Angle de rotation : ";
@@ -426,13 +431,13 @@ void effectuerRotation (vector<Cercle> &cercles, vector<Rectangle> &rectangles, 
         case RECTANGLE:
             
             // On effectu la rotation sur le rectangle
-            rectangles.at(indice).effectuerRotation(angleRadian);
+            rectangles.at(indice).effectuerRotation(pointCentral, angleRadian);
             
             break;
         case TRIANGLE:
             
             // On effectu la rotation sur le triangle
-            triangles.at(indice).effectuerRotation(angleRadian);
+            triangles.at(indice).effectuerRotation(pointCentral, angleRadian);
             break;
             
         default:
@@ -552,20 +557,20 @@ void modifierTaille(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vect
  \param [in/out] rectangles : Liste des rectangles
  \param [in/out] triangles : Liste des triangles
  ----------------------------------------------------------------------- **/
-void dessinerFigures (Canevas canevas, vector<Cercle> &cercles, vector<Rectangle> &rectangles, vector<Triangle> &triangles)
+void dessinerFigures (Canevas &canevas, vector<Cercle> &cercles, vector<Rectangle> &rectangles, vector<Triangle> &triangles)
 {
     // On redessine toutes les figures sur le canvas
-    for (int i = 0; i < cercles.size(); i++)
+    for (unsigned int i = 0; i < cercles.size(); i++)
     {
         cercles.at(i).dessiner(canevas);
     }
     
-    for (int i = 0; i < rectangles.size(); i++)
+    for (unsigned int i = 0; i < rectangles.size(); i++)
     {
         rectangles.at(i).dessiner(canevas);
     }
     
-    for (int i = 0; i < triangles.size(); i++)
+    for (unsigned int i = 0; i < triangles.size(); i++)
     {
         triangles.at(i).dessiner(canevas);
     }
