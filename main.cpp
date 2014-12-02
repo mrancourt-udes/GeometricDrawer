@@ -25,6 +25,7 @@ void retirer(vector<Cercle> &, vector<Rectangle> &, vector<Triangle> &);
 void effectuerRotation(vector<Cercle> &, vector<Rectangle> &, vector<Triangle> &);
 void deplacer(vector<Cercle> &, vector<Rectangle> &, vector<Triangle> &);
 void modifierTaille(vector<Cercle> &, vector<Rectangle> &, vector<Triangle> &);
+void dessinerFigures (Canevas canevas, vector<Cercle> &, vector<Rectangle> &, vector<Triangle> &);
 
 // Declaration des constantes globales
 const char AJOUTER = 'a';
@@ -45,6 +46,7 @@ const string TRAIN = ">> ";
 int main()
 {
     char commande;
+    Canevas canevas;
     vector<Cercle> cercles;
     vector<Rectangle> rectangles;
     vector<Triangle> triangles;
@@ -60,6 +62,10 @@ int main()
             case AJOUTER:
                 // Ajout de la figure
                 ajouter(cercles, rectangles, triangles);
+                // On effate tout le canevas
+                canevas.effacer();
+                // On redessine chacune des fogures
+                dessinerFigures(canevas, cercles, rectangles, triangles);
                 break;
             case LISTER:
                 // Lister les figures
@@ -69,21 +75,37 @@ int main()
             case EFFACER:
                 // Supprimer une figure
                 retirer(cercles, rectangles, triangles);
+                // On effate tout le canevas
+                canevas.effacer();
+                // On redessine chacune des fogures
+                dessinerFigures(canevas, cercles, rectangles, triangles);
                 break;
                 
             case EFFECTUER_ROTATION:
                 // Effectuer une rotation sur une figure
                 effectuerRotation(cercles, rectangles, triangles);
+                // On effate tout le canevas
+                canevas.effacer();
+                // On redessine chacune des fogures
+                dessinerFigures(canevas, cercles, rectangles, triangles);
                 break;
                 
             case DEPLACER:
                 // Deplacer une figure
                 deplacer(cercles, rectangles, triangles);
+                // On effate tout le canevas
+                canevas.effacer();
+                // On redessine chacune des fogures
+                dessinerFigures(canevas, cercles, rectangles, triangles);
                 break;
                 
             case MODIFIER_TAILLE:
                 // Modifier la taille d'une figure
                 modifierTaille(cercles, rectangles, triangles);
+                // On effate tout le canevas
+                canevas.effacer();
+                // On redessine chacune des fogures
+                dessinerFigures(canevas, cercles, rectangles, triangles);
                 break;
                 
             default:
@@ -361,24 +383,24 @@ void effectuerRotation (vector<Cercle> &cercles, vector<Rectangle> &rectangles, 
     int type = obtenirType(true);
     int indice = obtenirIndice(cercles, rectangles, triangles, type, true);
     
+    float angleRadian;
+    
+    cout << "Angle de rotation : ";
+    cin >> angleRadian;
+    cout << TRAIN << angleRadian << endl;
+    
     switch (type)
     {
-        case CERCLE:
-            
-            // On eggectu la rotation sur le cercle
-            cercles.at(indice).effectuerRotation();
-            
-            break;
         case RECTANGLE:
             
             // On eggectu la rotation sur le rectangle
-            rectangles.at(indice).effectuerRotation();
+            rectangles.at(indice).effectuerRotation(angleRadian);
             
             break;
         case TRIANGLE:
 
             // On eggectu la rotation sur le triangle
-            triangles.at(indice).effectuerRotation();
+            triangles.at(indice).effectuerRotation(angleRadian);
             break;
             
         default:
@@ -398,24 +420,36 @@ void deplacer(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vector<Tri
     int type = obtenirType(true);
     int indice = obtenirIndice(cercles, rectangles, triangles, type, true);
     
+    int deltaX;
+    int deltaY;
+    
+    cout << "Deplacement en x : ";
+    cin >> deltaX;
+    cout << TRAIN << deltaX << endl;
+    
+    cout << "Deplacement en y : ";
+    cin >> deltaY;
+    cout << TRAIN << deltaY << endl;
+
+    
     switch (type)
     {
         case CERCLE:
             
             // On eggectu la rotation sur le cercle
-            cercles.at(indice).deplacer();
+            cercles.at(indice).deplacer(deltaX, deltaY);
             
             break;
         case RECTANGLE:
             
             // On eggectu la rotation sur le rectangle
-            rectangles.at(indice).deplacer();
+            rectangles.at(indice).deplacer(deltaX, deltaY);
             
             break;
         case TRIANGLE:
             
             // On eggectu la rotation sur le triangle
-            triangles.at(indice).deplacer();
+            triangles.at(indice).deplacer(deltaX, deltaY);
             break;
             
         default:
@@ -434,25 +468,37 @@ void modifierTaille(vector<Cercle> &cercles, vector<Rectangle> &rectangles, vect
     // Declaration des fonctions prototypes
     int type = obtenirType(true);
     int indice = obtenirIndice(cercles, rectangles, triangles, type, true);
+    Point pointCentral;
+    float proportion;
+    
+    cout << "Point central de modification : ";
+    pointCentral.lecture();
+    cout << TRAIN;
+    pointCentral.afficher();
+    cout << endl;
+    
+    cout << "Proportion : ";
+    cin >> proportion;
+    cout << TRAIN << proportion << endl;
     
     switch (type)
     {
         case CERCLE:
             
             // On eggectu la rotation sur le cercle
-            cercles.at(indice).modifierTaille();
+            cercles.at(indice).modifierTaille(pointCentral, proportion);
             
             break;
         case RECTANGLE:
             
             // On eggectu la rotation sur le rectangle
-            rectangles.at(indice).modifierTaille();
+            rectangles.at(indice).modifierTaille(pointCentral, proportion);
             
             break;
         case TRIANGLE:
             
             // On eggectu la rotation sur le triangle
-            triangles.at(indice).modifierTaille();
+            triangles.at(indice).modifierTaille(pointCentral, proportion);
             break;
             
         default:
@@ -471,16 +517,16 @@ void dessinerFigures (Canevas canevas, vector<Cercle> &cercles, vector<Rectangle
     // On redessine toutes les figures sur le canvas
     for (int i = 0; i < cercles.size(); i++)
     {
-        cercles.at(i).dessiner();
+        cercles.at(i).dessiner(canevas);
     }
     
     for (int i = 0; i < rectangles.size(); i++)
     {
-        rectangles.at(i).dessiner();
+        rectangles.at(i).dessiner(canevas);
     }
     
     for (int i = 0; i < triangles.size(); i++)
     {
-        triangles.at(i).dessiner();
+        triangles.at(i).dessiner(canevas);
     }
 }

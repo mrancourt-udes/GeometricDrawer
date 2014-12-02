@@ -12,7 +12,8 @@
 #include <string>
 
 #include "Point.h"
-
+#include "canevas.h"
+#include "ligne.h"
 
 class Triangle
 {
@@ -46,16 +47,16 @@ class Triangle
     Point valCentre();
     
     // Methode pour effectuer une rotation sur un triangle
-    void effectuerRotation();
+    void effectuerRotation(float);
     
     // Methode pour deplacer un triangle
-    void deplacer();
+    void deplacer(int deltaX, int deltaY);
     
     // Methode pour modifier la taille d'un triangle
-    void modifierTaille();
+    void modifierTaille(Point, int);
     
     // Methode pour dessiner un triangle
-    void dessiner();
+    void dessiner(Canevas);
     
     // Pour lecture
     void lecture();

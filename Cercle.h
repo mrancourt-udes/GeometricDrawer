@@ -12,6 +12,7 @@
 #include <string>
 
 #include "Point.h"
+#include "canevas.h"
 
 using namespace std;
 
@@ -22,14 +23,14 @@ class Cercle
 {
     // Attributs
     Point pointCentral;
-    float rayon;
+    int rayon;
     int couleur;
     
 public:
     // Constructeurs
     Cercle();
-    Cercle(Point, float);
-    Cercle(Point, float, int);
+    Cercle(Point, int);
+    Cercle(Point, int, int);
     
     // Getters
     Point valCentre();
@@ -38,20 +39,17 @@ public:
     
     // Setters
     void changerCentre(Point);
-    void changerRayon(float);
+    void changerRayon(int);
     void changerCouleur(int);
-    
-    // Methode pour effectuer une rotation sur un cercle
-    void effectuerRotation();
-    
+
     // Methode pour deplacer un cercle
-    void deplacer();
+    void deplacer(int deltaX, int deltaY);
     
     // Methode pour modifier la taille d'un cercle
-    void modifierTaille();
+    void modifierTaille(Point, float);
     
     // Methode pour dessiner un cercle
-    void dessiner();
+    void dessiner(Canevas);
     
     // Pour lecture
     void lecture();

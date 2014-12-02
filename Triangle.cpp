@@ -106,24 +106,38 @@ void Triangle::changerCouleur(int nouvelleCouleur)
     couleur = nouvelleCouleur;
 }
 
-void Triangle::effectuerRotation()
+void Triangle::effectuerRotation(float angleRadian)
 {
-    
+    point1.rotation(valCentre(), angleRadian);
+    point2.rotation(valCentre(), angleRadian);
+    point3.rotation(valCentre(), angleRadian);
 }
 
-void Triangle::deplacer()
+void Triangle::deplacer(int dx, int dy)
 {
-    
+    point1.deplacement(dx, dy);
+    point2.deplacement(dx, dy);
+    point3.deplacement(dx, dy);
 }
 
-void Triangle::modifierTaille()
+void Triangle::modifierTaille(Point pointCentral, int proportion)
 {
-    
+    point1.deplacementProp(pointCentral, proportion);
+    point2.deplacementProp(pointCentral, proportion);
+    point3.deplacementProp(pointCentral, proportion);
 }
 
-void Triangle::dessiner()
+void Triangle::dessiner(Canevas canevas)
 {
+    // Premiere ligne
+    Ligne ligne(point1, point2);
+    ligne.afficher(canevas);
     
+    // Deuxieme ligne
+    ligne.init(point2, point3);
+    
+    // Troisieme ligne
+    ligne.init(point3, point1);
 }
 
 string Triangle::enString()

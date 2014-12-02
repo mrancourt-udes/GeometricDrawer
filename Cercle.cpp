@@ -5,7 +5,9 @@
  \brief Fichier d'implementation de la classe cercle
  *****************************************************************/
 
+#include <cmath>
 #include "Cercle.h"
+#include "ligne.h"
 
 // Constructeur par defaut
 Cercle::Cercle()
@@ -14,13 +16,13 @@ Cercle::Cercle()
     rayon = 0;
 }
 
-Cercle::Cercle(Point pointCentral, float rayon)
+Cercle::Cercle(Point pointCentral, int rayon)
 {
     this->pointCentral = pointCentral;
     this->rayon = rayon;
 }
 
-Cercle::Cercle(Point pointCentral, float rayon, int couleur)
+Cercle::Cercle(Point pointCentral, int rayon, int couleur)
 {
     this->pointCentral = pointCentral;
     this->rayon = rayon;
@@ -47,7 +49,7 @@ void Cercle::changerCentre(Point point)
     pointCentral = point;
 }
 
-void Cercle::changerRayon(float rayon) {
+void Cercle::changerRayon(int rayon) {
     rayon = rayon;
 }
 
@@ -68,24 +70,41 @@ void Cercle::lecture()
     cin >> rayon;
 }
 
-void Cercle::effectuerRotation()
+void Cercle::deplacer(int dx, int dy)
 {
-    
+    pointCentral.deplacement(dx, dy);
 }
 
-void Cercle::deplacer()
+void Cercle::modifierTaille(Point pointCentralModification, float proportion)
 {
-    
+    pointCentral.deplacementProp(pointCentralModification, proportion);
+    rayon *= proportion;
 }
 
-void Cercle::modifierTaille()
+void Cercle::dessiner(Canevas canevas)
 {
     
-}
-
-void Cercle::dessiner()
-{
+    const int NB_ANGLES = 40;
+    const int TOUR_COMPLET = 360;
     
+    int alpha = 0;
+    int epsilon = NB_ANGLES / TOUR_COMPLET;
+    
+    for (int i = 0; i < NB_ANGLES; i++)
+    {
+        int p1X = pointCentral.valX() + (rayon * cos(alpha));
+        int p1Y = pointCentral.valY() + (rayon * cos(alpha));
+        int p2X = pointCentral.valX() + (rayon * cos(alpha + epsilon));
+        int p2Y = pointCentral.valY() + (rayon * cos(alpha + epsilon));
+        
+        Point p1(p1X, p1Y);
+        Point p2(p2X, p2Y);
+        
+        Ligne ligne(p1, p2);
+        ligne.afficher(canevas);
+        
+        alpha += epsilon;
+    }
 }
 
 string Cercle::enString()

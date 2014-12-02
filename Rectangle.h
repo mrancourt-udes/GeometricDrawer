@@ -12,13 +12,19 @@
 #include <string>
 
 #include "Point.h"
+#include "canevas.h"
 
 class Rectangle
 {
     // Attributs
     Point point1;
     Point point2;
+    Point point3;
+    Point point4;
     int couleur;
+    
+    // Methode d'initialisation
+    void init();
     
 public:
     // Constructeurs
@@ -29,27 +35,31 @@ public:
     // Getters
     Point valPoint1();
     Point valPoint2();
+    Point valPoint3();
+    Point valPoint4();
     int valCouleur();
     
     // Setters
     void changerPoint1(Point);
     void changerPoint2(Point);
+    void changerPoint3(Point);
+    void changerPoint4(Point);
     void changerCouleur(int);
     
     // Methode qui calcule la valeur centrale du rectangle
     Point valCentre();
     
     // Methode pour effectuer une rotation sur un rectangle
-    void effectuerRotation();
+    void effectuerRotation(float);
     
     // Methode pour deplacer un rectangle
-    void deplacer();
+    void deplacer(int deltaX, int deltaY);
     
     // Methode pour modifier la taille d'un rectangle
-    void modifierTaille();
+    void modifierTaille(Point, float);
     
     // Methode pour dessiner un cercle
-    void dessiner();
+    void dessiner(Canevas);
     
     // Pour lecture
     void lecture();
