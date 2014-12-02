@@ -11,10 +11,10 @@
 // Constructeur par defaut
 Rectangle::Rectangle()
 {
-    point1 = Point(0, 0);
-    point2 = Point(0, 0);
-    point3 = Point(0, 0);
-    point4 = Point(0, 0);
+    point1.init(0, 0);
+    point2.init(0, 0);
+    point3.init(0, 0);
+    point4.init(0, 0);
 }
 
 Rectangle::Rectangle(Point point1, Point point2)
@@ -34,17 +34,14 @@ void Rectangle::init()
 {
     // Calcul de la difference en X des deux points en diagonale
     int deltaX = point2.valX() - point1.valX();
-
-    point3 = Point(point1.valX() + deltaX, point2.valY());
-    point4 = Point(point1.valX(), point1.valY());
+    
+    point3.init(point1.valX() + deltaX, point2.valY());
+    point4.init(point1.valX(), point1.valY());
 }
 
 // Lectures des informations du rectangle
 void Rectangle::lecture()
 {
-    Point point1;
-    Point point2;
-    
     cout << "Point 1 : ";
     point1.lecture();
 

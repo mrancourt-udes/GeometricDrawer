@@ -12,7 +12,7 @@
 // Constructeur par defaut
 Cercle::Cercle()
 {
-    pointCentral = Point(0, 0);
+    pointCentral.init(0, 0);
     rayon = 0;
 }
 
@@ -61,8 +61,6 @@ void Cercle::changerCouleur(int couleur)
 // Lectures des informations du cercle
 void Cercle::lecture()
 {
-    Point pointCentral;
-    
     cout << "Point central : ";
     pointCentral.lecture();
     

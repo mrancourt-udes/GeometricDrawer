@@ -10,6 +10,7 @@
 
 #include <stdio.h>
 #include <string>
+#include <cmath>
 
 #include "Point.h"
 #include "canevas.h"

@@ -10,9 +10,9 @@
 // Constructeur par defaut
 Triangle::Triangle()
 {
-    point1 = Point(0, 0);
-    point2 = Point(0, 0);
-    point3 = Point(0, 0);
+    point1.init(0, 0);
+    point2.init(0, 0);
+    point3.init(0, 0);
 }
 
 Triangle::Triangle(Point point1, Point point2, Point point3)
@@ -32,11 +32,7 @@ Triangle::Triangle(Point point1, Point point2, Point point3, int couleur)
 
 // Lectures des informations du rectangle
 void Triangle::lecture()
-{
-    Point point1;
-    Point point2;
-    Point point3;
-    
+{    
     cout << "Point 1 : ";
     point1.lecture();
     
