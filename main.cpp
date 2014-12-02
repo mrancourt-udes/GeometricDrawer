@@ -382,12 +382,16 @@ void effectuerRotation (vector<Cercle> &cercles, vector<Rectangle> &rectangles, 
     // Declaration des fonctions prototypes
     int type = obtenirType(true);
     int indice = obtenirIndice(cercles, rectangles, triangles, type, true);
+    float degreeEnRadians(int);
     
+    int angle;
     float angleRadian;
     
     cout << "Angle de rotation : ";
-    cin >> angleRadian;
-    cout << TRAIN << angleRadian << endl;
+    cin >> angle;
+    cout << TRAIN << angle << endl;
+    
+    angleRadian = degreeEnRadians(angle);
     
     switch (type)
     {
@@ -398,7 +402,7 @@ void effectuerRotation (vector<Cercle> &cercles, vector<Rectangle> &rectangles, 
             
             break;
         case TRIANGLE:
-
+            
             // On eggectu la rotation sur le triangle
             triangles.at(indice).effectuerRotation(angleRadian);
             break;
@@ -529,4 +533,12 @@ void dessinerFigures (Canevas canevas, vector<Cercle> &cercles, vector<Rectangle
     {
         triangles.at(i).dessiner(canevas);
     }
+}
+
+float degreeEnRadians(int degree)
+{
+    const float PI = 3.1416;
+    const int DIVISEUR = 180;
+    
+    return degree * PI / DIVISEUR;
 }
