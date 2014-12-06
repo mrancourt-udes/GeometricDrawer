@@ -5,13 +5,13 @@
  \brief Fichier d'en-tete de la classe cercle
  *****************************************************************/
 
-#ifndef __CERCLE_H__
-#define __CERCLE_H__
+#ifndef __CERCLE_H_
+#define __CERCLE_H_
 
 #include <string>
 
+#include "point.h"
 #include "canevas.h"
-#include "Point.h"
 
 using namespace std;
 
@@ -24,37 +24,26 @@ class Cercle
     Point pointCentral;
     int rayon;
     int couleur;
-    
+
 public:
     // Constructeurs
     Cercle();
     Cercle(Point, int);
-    Cercle(Point, int, int);
-    
-    // Getters
-    Point valCentre();
-    float valRayon();
-    int   valCouleur();
-    
-    // Setters
-    void changerCentre(Point);
-    void changerRayon(int);
-    void changerCouleur(int);
 
     // Methode pour deplacer un cercle
     void deplacer(int deltaX, int deltaY);
-    
+
     // Methode pour modifier la taille d'un cercle
     void modifierTaille(Point, float);
-    
+
     // Methode pour dessiner un cercle
     void dessiner(Canevas &);
-    
+
     // Pour lecture
     void lecture();
-    
+
     // Conversion de l'objet en string
     string enString();
 };
 
-#endif /* __CERCLE_H__ */
+#endif /* __CERCLE_H_ */

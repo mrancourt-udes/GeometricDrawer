@@ -5,134 +5,81 @@
  \brief Fichier d'implementation de la classe rectangle
  *****************************************************************/
 
-#include <cmath>
-
-#include "Rectangle.h"
 #include "ligne.h"
+#include "Rectangle.h"
+
+using namespace std;
 
 // Constructeur par defaut
 Rectangle::Rectangle()
 {
     point1.init(0, 0);
     point2.init(0, 0);
-    point3.init(0, 0);
-    point4.init(0, 0);
+    init();
 }
 
+// Constructeur parametre
 Rectangle::Rectangle(Point point1, Point point2)
 {
     this->point1 = point1;
     this->point2 = point2;
+    init();
 }
 
-Rectangle::Rectangle(Point point1, Point point2, int couleur)
-{
-    this->point1 = point1;
-    this->point2 = point2;
-    this->couleur = couleur;
-}
-
+/** ----------------------------------------------------------------------
+ \brief Ce module permet d'initialiser les points manquants du rectangle
+ ----------------------------------------------------------------------- **/
 void Rectangle::init()
-{    
+{
+    // Initialisation des points 3 et 4
     point3.init(point2.valX(), point1.valY());
     point4.init(point1.valX(), point2.valY());
 }
-
-// Lectures des informations du rectangle
+/** ----------------------------------------------------------------------
+ \brief Ce module permet de lire les points du rectangle.
+ ----------------------------------------------------------------------- **/
 void Rectangle::lecture()
 {
+    // Lecture des points en diagonale
     cout << "Point 1 : ";
     point1.lecture();
 
     cout << "Point 2 : ";
     point2.lecture();
-    
+
     // Initialisation des points 3 et 4
     init();
 }
 
-// Get/Set
-Point Rectangle::valPoint1()
+/** ----------------------------------------------------------------------
+ \brief Ce module permet de faire une rotation du rectangle
+ \param [in] pointCentre : Centre de rotation
+ \param [in] angleRadian : Angle de rotation
+ ----------------------------------------------------------------------- **/
+void Rectangle::effectuerRotation(Point pointCentre, float angleRadian)
 {
-    return point1;
+    point1.rotation(pointCentre, angleRadian);
+    point2.rotation(pointCentre, angleRadian);
+    point3.rotation(pointCentre, angleRadian);
+    point4.rotation(pointCentre, angleRadian);
 }
 
-Point Rectangle::valPoint2()
-{
-    return point2;
-}
-
-Point Rectangle::valPoint3()
-{
-    return point3;
-}
-
-Point Rectangle::valPoint4()
-{
-    return point4;
-}
-
-int Rectangle::valCouleur()
-{
-    return couleur;
-}
-
-Point Rectangle::valCentre()
-{
-    // Declaration des constantes
-    const int NB_POINTS = 2;
-    
-    // Todo : Corriger les calculs
-    int centreX;
-    int centreY;
-    
-    centreX = ((point1.valX() + point2.valX()) / NB_POINTS);
-    centreY = ((point1.valY() + point2.valY()) / NB_POINTS);
-    
-    Point pointCentral(centreX, centreY);
-    
-    return pointCentral;
-}
-
-void Rectangle::changerPoint1(Point point)
-{
-    point1 = point;
-}
-
-void Rectangle::changerPoint2(Point point)
-{
-    point2 = point;
-}
-
-void Rectangle::changerPoint3(Point point)
-{
-    point3 = point;
-}
-
-void Rectangle::changerPoint4(Point point)
-{
-    point4 = point;
-}
-
-void Rectangle::changerCouleur(int nouvelleCouleur)
-{
-    couleur = nouvelleCouleur;
-}
-
-void Rectangle::effectuerRotation(Point pointCentral, float angleRadian)
-{
-    point1.rotation(pointCentral, angleRadian);
-    point2.rotation(pointCentral, angleRadian);
-    point3.rotation(pointCentral, angleRadian);
-    point4.rotation(pointCentral, angleRadian);
-}
-
+/** ----------------------------------------------------------------------
+ \brief Ce module permet de faire le déplacement du rectangle
+ \param [in] dx : Deplacement en x
+ \param [in] dy : Deplacement en y
+ ----------------------------------------------------------------------- **/
 void Rectangle::deplacer(int dx, int dy)
 {
     point1.deplacement(dx, dy);
     point2.deplacement(dx, dy);
 }
 
+/** ----------------------------------------------------------------------
+ \brief Ce module permet de faire modifier la taille du rectangle
+ \param [in] PointCentral : Point central de modification de taille
+ \param [in] proportion : proportion de la modification de la taille
+ ----------------------------------------------------------------------- **/
 void Rectangle::modifierTaille(Point pointCentral, float proportion)
 {
     point1.deplacementProp(pointCentral, proportion);
@@ -141,25 +88,33 @@ void Rectangle::modifierTaille(Point pointCentral, float proportion)
     point4.deplacementProp(pointCentral, proportion);
 }
 
+/** ----------------------------------------------------------------------
+ \brief Ce module permet de dessiner un rectangle
+ \param [in,out] canevas : canevas de dessin
+ ----------------------------------------------------------------------- **/
 void Rectangle::dessiner(Canevas &canevas)
 {
     // Premiere ligne
     Ligne ligne(point1, point3);
     ligne.afficher(canevas);
-    
+
     // Deuxieme ligne
-    Ligne ligne2(point3, point2);
+    Ligne ligne2(point2, point3);
     ligne2.afficher(canevas);
-    
+
     // Troisieme ligne
     Ligne ligne3(point2, point4);
     ligne3.afficher(canevas);
-    
+
     // Quatrieme ligne
     Ligne ligne4(point4, point1);
     ligne4.afficher(canevas);
 }
 
+/** ----------------------------------------------------------------------
+ \brief Ce module d'afficher les information du triangle
+ \return str : chaine de caracteres contenant l'information
+ ----------------------------------------------------------------------- **/
 string Rectangle::enString()
 {
     string str =
@@ -167,6 +122,6 @@ string Rectangle::enString()
     "(" + to_string(point3.valX()) + "," + to_string(point3.valY()) + ")\n" +
     "(" + to_string(point4.valX()) + "," + to_string(point4.valY()) + ")-"+
     "(" + to_string(point2.valX()) + "," + to_string(point2.valY()) + ")\n";
-    
+
     return str;
 }
