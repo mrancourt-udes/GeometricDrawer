@@ -1,5 +1,6 @@
-#include <iostream>
 #include <cmath>
+#include <iostream>
+
 #include "point.h"
 
 using namespace std;
@@ -53,7 +54,7 @@ void Point::rotation(Point centre, float angle)
     coordonneeX = coordonneeX - centre.coordonneeX;
     coordonneeY = coordonneeY - centre.coordonneeY;
     
-    xTemp =  int(coordonneeX * cos(angle) -coordonneeY * sin(angle)) ;
+    xTemp =  int(coordonneeX * cos(angle) - coordonneeY * sin(angle));
     yTemp = int(coordonneeY * cos(angle) + coordonneeX * sin(angle));
     
     coordonneeX = xTemp + centre.coordonneeX;

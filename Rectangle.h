@@ -1,5 +1,5 @@
 /** **************************************************************
- \file rectangle
+ \file rectangle.h
  \author Martin Rancourt - 140 59 412
  \author Guillaume Theaud - 131 97 685
  \brief Fichier d'en-tete de la classe rectangle
