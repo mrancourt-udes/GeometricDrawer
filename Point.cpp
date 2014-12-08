@@ -1,6 +1,5 @@
-#include <cmath>
 #include <iostream>
-
+#include <cmath>
 #include "point.h"
 
 using namespace std;
@@ -44,32 +43,32 @@ void Point::lecture()
 // Affichage à l'écran des coordonnees du point
 void Point::afficher(void)
 {
-    cout << "(" << coordonneeX << "," << coordonneeY << ")";
+  	cout << "(" << coordonneeX << "," << coordonneeY << ")";
 }
 // Rotation d'un point autour d'un autre point
 void Point::rotation(Point centre, float angle)
 {
-    int xTemp, yTemp;
-    
-    coordonneeX = coordonneeX - centre.coordonneeX;
-    coordonneeY = coordonneeY - centre.coordonneeY;
-    
-    xTemp =  int(coordonneeX * cos(angle) - coordonneeY * sin(angle));
-    yTemp = int(coordonneeY * cos(angle) + coordonneeX * sin(angle));
-    
-    coordonneeX = xTemp + centre.coordonneeX;
-    coordonneeY = yTemp + centre.coordonneeY;
-    
+     int xTemp, yTemp;
+
+     coordonneeX = coordonneeX - centre.coordonneeX;
+     coordonneeY = coordonneeY - centre.coordonneeY;
+
+     xTemp =  int(coordonneeX * cos(angle) -coordonneeY * sin(angle)) ;
+     yTemp = int(coordonneeY * cos(angle) + coordonneeX * sin(angle));
+
+     coordonneeX = xTemp + centre.coordonneeX;
+     coordonneeY = yTemp + centre.coordonneeY;
+
 }
 // Deplacement absolu d'un point
 void Point::deplacement(int dx, int dy)
 {
-    coordonneeX = coordonneeX + dx;
-    coordonneeY = coordonneeY + dy;
+     coordonneeX = coordonneeX + dx;
+     coordonneeY = coordonneeY + dy;
 }
 // deplacement proportionnel d'un point
 void Point::deplacementProp(Point ancre,float delta)
 {
-    coordonneeX = int((coordonneeX - ancre.coordonneeX) * delta) + ancre.coordonneeX;
-    coordonneeY = int((coordonneeY - ancre.coordonneeY) * delta) + ancre.coordonneeY;
+     coordonneeX = int((coordonneeX - ancre.coordonneeX) * delta) + ancre.coordonneeX;
+     coordonneeY = int((coordonneeY - ancre.coordonneeY) * delta) + ancre.coordonneeY;
 }
