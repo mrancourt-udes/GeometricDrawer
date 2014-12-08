@@ -1,6 +1,6 @@
-//#include <g2.h>
-//#include <g2_PS.h>
-//#include <g2_X11.h>
+#include <g2.h>
+#include <g2_PS.h>
+#include <g2_X11.h>
 
 #include "ligne.h"
 #include "canevas.h"
@@ -48,9 +48,9 @@ Ligne::Ligne()
 void Ligne::afficher(Canevas &cv)
 {
     // configure la couleur du crayon
-    // g2_pen(cv.valIdentificateur(),couleur);
+    g2_pen(cv.valIdentificateur(),couleur);
     // on dessine la ligne
-    // g2_line(cv.valIdentificateur(), point1.valX(), point1.valY(), point2.valX(), point2.valY());
+    g2_line(cv.valIdentificateur(), point1.valX(), point1.valY(), point2.valX(), point2.valY());
 }
 //
 // Methodes pour voir et modifier les attributs

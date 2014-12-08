@@ -1,9 +1,9 @@
 #ifndef CANEVAS_H
 #define CANEVAS_H
 
-//#include <g2.h>
-//#include <g2_PS.h>
-//#include <g2_X11.h>
+#include <g2.h>
+#include <g2_PS.h>
+#include <g2_X11.h>
 
 #include <iostream>
 using namespace std;
